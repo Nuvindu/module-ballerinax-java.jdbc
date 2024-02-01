@@ -58,7 +58,7 @@ jobs:
 
             - name: Set ENV Variables
               run: |
-                echo '${{ toJson(secrets) }}' | awk -F'[:,}]' '{for(i=2;i<=NF-1;i+=4) print $i "=" $(i+1)}' >> $GITHUB_ENV
+                echo '${{ toJson(secrets) }}' | Out-File -FilePath $env:GITHUB_ENV -Append
 
             -   name: Build the Project
                 env:
